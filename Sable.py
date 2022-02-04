@@ -1,11 +1,8 @@
 ###########################################
 # Autor: Valentin Jacquin
 ###########################################
-from tabnanny import check
 import tkinter as tk
 import random as rdm
-
-from pyparsing import col
 
 fenetre = tk.Tk()
 fenetre.title("Ecoulement sable")
