@@ -224,7 +224,10 @@ def automate():
     assert dataSand != [], "DataSand is empty"
     for i in range(0, len(dataSand) - 1):
         for j in range(0, len(dataSand) - 1):
-            if dataSand[i][j] >= 4:
+            if i == 0 and j == 0:
+                checkFinish = True
+            if dataSand[i][j] > 4:
+                print("o")
                 checkFinish = False
                 dataSand[i][j] -= 4
                 if i != 0:
@@ -234,9 +237,11 @@ def automate():
                 if j != (len(dataSand[i]) - 1):
                     dataSand[i][j + 1] += 1
                 dataSand[i][j - 1] += 1
+    print(checkFinish)
     showSand()
-    while checkFinish is not True:
-        automate()
+    if checkFinish is True:
+        return
+    automate()
 
 
 
