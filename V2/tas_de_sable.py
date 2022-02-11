@@ -18,8 +18,15 @@ cTableau.grid()
 ###############################################
 
 def chooseConfig():
+    """"Cette fonction eneleve les boutons de bases pour mettre a la place les autres bouttons
+    a propos des configurations"""
     boperation.grid_remove()
     bconfig.grid_remove()
+    bsauvegarde.grid_remove()
+    brandom = tk.Button(root, text="Random")
+    bpilecentree = tk.Button(root, text="Pile centree")
+    bmaxstable = tk.Button(root, text="Max Stable")
+    bidentity = tk.Button(root, text="Identity")
 
 
 ###############################################
