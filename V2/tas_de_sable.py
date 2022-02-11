@@ -6,7 +6,6 @@
 ###################################
 
 # import des librairies
-from logging import root
 import tkinter as tk
 
 
