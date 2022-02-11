@@ -23,16 +23,21 @@ def chooseConfig():
     boperation.grid_remove()
     bconfig.grid_remove()
     bsauvegarde.grid_remove()
-    brandom = tk.Button(root, text="Random")
-    bpilecentree = tk.Button(root, text="Pile centree")
-    bmaxstable = tk.Button(root, text="Max Stable")
-    bidentity = tk.Button(root, text="Identity")
+    
 
 
 ###############################################
 # Création des Boutons
 bconfig = tk.Button(root, text="Config", command = chooseConfig)
 bconfig.grid(column = 0, row = 0)
+
+brandom = tk.Button(root, text="Random")
+
+bpilecentree = tk.Button(root, text="Pile centree")
+
+bmaxstable = tk.Button(root, text="Max Stable")
+
+bidentity = tk.Button(root, text="Identity")
 
 boperation = tk.Button(root, text="Operation")
 boperation.grid(column = 0, row = 1)
