@@ -1,22 +1,29 @@
-<<<<<<< HEAD
-###################################
-# groupe LDDBI 1
-=======
 ###############################################
 # Groupe LDDBI
->>>>>>> 0ffbf7a8067676ffdc36edf2d657a28cb02e80d6
 # Benjamin PREHAUD
 # Arthur VINCENS
 # Valentin JACQUIN
 # https://github.com/uvsq22102587/SandProject
-<<<<<<< HEAD
-###################################
+###############################################
+# import des librairies
+import tkinter as tk
+###############################################
 
+###############################################
+# initialisation de la fenêtre
+root = tk.Tk()
+root.title("tas de sable")
+cTableau = tk.Canvas(root, height=500, width=500, bg="white")
+cTableau.grid()
+###############################################
 
 def chooseConfig():
     boperation.grid_remove()
     bconfig.grid_remove()
 
+
+###############################################
+# Création des Boutons
 bconfig = tk.Button(root, text="Config", command = chooseConfig)
 bconfig.grid(column = 0, row = 0)
 
@@ -25,23 +32,10 @@ boperation.grid(column = 0, row = 1)
 
 bsauvegarde = tk.Button(root, text="Sauvegarder la config")
 bsauvegarde.grid(column = 0, row = 2)
-=======
 ###############################################
 
-# import des librairies
-import tkinter as tk
 
-
-
-root = tk.Tk()
-root.title("tas de sable")
-cTableau = tk.Canvas(root, height=500, width=500, bg="white")
-cTableau.grid()
-root.mainloop()
-
-
-
-
+###############################################
 def tableauVide():
     """Cette fonction affiche un tableau vide en utilisant des rectangle vide
     et des diez pour le délimiter. La longueur des carreaux s'adapte en
@@ -57,5 +51,7 @@ def tableauVide():
             sousListeGuiSable.append(Sable)
         guiSable.append(sousListeGuiSable)
         sousListeGuiSable = []
-    
->>>>>>> 0ffbf7a8067676ffdc36edf2d657a28cb02e80d6
+
+
+# Boucle Principale
+root.mainloop()
