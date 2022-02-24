@@ -64,6 +64,23 @@ def tableauVide():
         guiSable.append(sousListeGuiSable)
         sousListeGuiSable = []
 
+##############################################
+
+
+##############################################
+def
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Boucle Principale
 root.mainloop()
