@@ -72,11 +72,11 @@ def tableauVide():
     et des diez pour le délimiter. La longueur des carreaux s'adapte en
     fonction du nombre de carreaux demandé par l'utilisateur en amont."""
     global nombreCarreaux, guiSable
-    longueurCarreaux = (500 / nombreCarreaux) / 2
+    longueurCarreaux = int((500 / nombreCarreaux) / 2)
     espacement = 500 - (longueurCarreaux * nombreCarreaux * 2)
     print(espacement)
     while espacement < 20:
-        longueurCarreaux -= 0.0001
+        longueurCarreaux -= 0.001
         espacement = 500 - (longueurCarreaux * nombreCarreaux * 2)
     print(espacement)
     x = espacement
@@ -97,7 +97,6 @@ def tableauVide():
 
 
 ##############################################
-def
 
 
 
@@ -110,9 +109,7 @@ def
 
 
 
-
-# Boucle Principale
-root.mainloop()
 # Boucle Principale
 tableauVide()
 root.mainloop()
+# Boucle Principale
