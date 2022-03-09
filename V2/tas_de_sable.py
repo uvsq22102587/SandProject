@@ -74,11 +74,9 @@ def tableauVide():
     global nombreCarreaux, guiSable
     longueurCarreaux = int((500 / nombreCarreaux) / 2)
     espacement = 500 - (longueurCarreaux * nombreCarreaux * 2)
-    print(espacement)
     while espacement < 20:
         longueurCarreaux -= 0.001
         espacement = 500 - (longueurCarreaux * nombreCarreaux * 2)
-    print(espacement)
     x = espacement
     y = 0
     # assert x - longueurCarreaux > 0 or y - longueurCarreaux > 0, "Il n'y a pas assez de carreaux dans la grille pour qu'elle soit affichée"
