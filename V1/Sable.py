@@ -92,8 +92,8 @@ def showSand():
 
 def randomGeneration():
     global dataSand, nbrValeur, valeurMaxCase
-    print("randomGeneration")
     dataSand = []
+    print("Random Génération")
     for i in range(0, nbrValeur):
         sousListdataSand = []
         for j in range(0, nbrValeur):

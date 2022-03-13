@@ -1,0 +1,12 @@
+Listes des configurations à faire:
+-Pile centrée
+-Max Stable
+-Identity
+-Random
+-Config Sauvegardée
+Listes des executions à faire:
+-Addition
+-Soustraction
+-Automate (Etape par étape)
+-Automate complet (possibilité de stopper l'Automate)
+
