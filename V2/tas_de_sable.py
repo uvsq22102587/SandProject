@@ -91,6 +91,21 @@ def random():
     return matrice
 
 
+def maxStable():
+    print("maxStable")
+    matrice = [[3 for i in range(0, 47)] for i in range(0, 47)]
+    return matrice
+
+
+def pileCentree():
+    """Créée une matrice de 48*48 avec la case centrale rempli de 4
+    grains de sable."""
+    print("pile Centrée")
+    matrice = [[0 for i in range(0, 47)] for i in range(0, 47)]
+    matrice[23][23] = 4
+    return matrice
+
+
 def operation(mat):
     """Fait une opération entre dataSand et la matrice donnée en argument.
     Elle récupère le type d'opération via une variable globale initié avant."""
@@ -116,45 +131,93 @@ def setConfig(config: str, op=False):
     une initialisation de la matrice par un type), elle remplace dataSand
     par la matrice."""
     global dataSand, matrice
+    matrice = []
     print("setConfig")
     if config == "rdm":
         matrice = random()
-    elif True:
-        pass
+    elif config == "max stable":
+        matrice = maxStable()
+    elif config == "pile":
+        matrice = pileCentree()
     if op is False:
         dataSand = matrice
     showSable(matrice)
 
 
 def stabiliserCase(x, y):
-    print("Stabilisation Case")
-    if dataSand[y][x] >= 5:
-        # on vérifie que la case voisine n'est pas hors champ.
-        if (len(dataSand) - 1) > (y + 1):
-            dataSand[y + 1][x] += 1
-        if (len(dataSand) - 1) > (y - 1):
-            dataSand[y - 1][x] += 1
-        if (len(dataSand) - 1) > (x + 1):
-            dataSand[y][x + 1] += 1
-        if (len(dataSand) - 1) > (x - 1):
-            dataSand[y][x - 1] += 1
-        dataSand[y][x] -= 4
-        if dataSand[y][x] >= len(couleur):
+    # on vérifie que la case voisine n'est pas hors champ.
+    if (len(dataSand) - 1) > (y + 1):
+        dataSand[y + 1][x] += 1
+        if dataSand[y + 1][x] >= len(couleur):
             cTableau.itemconfigure(
-                guiSable[y][x],
+                guiSable[y + 1][x],
                 fill="black")
         else:
             cTableau.itemconfigure(
-                guiSable[y][x],
-                fill=couleur[dataSand[y][x]])
+                guiSable[y + 1][x],
+                fill=couleur[dataSand[y + 1][x]])
+    else:
+        # print("Case trop en bas")
+        pass
+    if (len(dataSand) - 1) > (y - 1):
+        dataSand[y - 1][x] += 1
+        if dataSand[y - 1][x] >= len(couleur):
+            cTableau.itemconfigure(
+                guiSable[y - 1][x],
+                fill="black")
+        else:
+            cTableau.itemconfigure(
+                guiSable[y - 1][x],
+                fill=couleur[dataSand[y - 1][x]])
+    else:
+        pass
+        # print("Case trop en haut")
+    if (len(dataSand) - 1) > (x + 1):
+        dataSand[y][x + 1] += 1
+        if dataSand[y][x + 1] >= len(couleur):
+            cTableau.itemconfigure(
+                guiSable[y][x + 1],
+                fill="black")
+        else:
+            cTableau.itemconfigure(
+                guiSable[y][x + 1],
+                fill=couleur[dataSand[y][x + 1]])
+    else:
+        # print("Case trop à droite")
+        pass
+    if (len(dataSand) - 1) > (x - 1):
+        dataSand[y][x - 1] += 1
+        if dataSand[y][x - 1] >= len(couleur):
+            cTableau.itemconfigure(
+                guiSable[y][x - 1],
+                fill="black")
+        else:
+            cTableau.itemconfigure(
+                guiSable[y][x - 1],
+                fill=couleur[dataSand[y][x - 1]])
+    else:
+        pass
+        # print("Case trop à gauche")
+    dataSand[y][x] -= 4
+    if dataSand[y][x] >= len(couleur):
+        cTableau.itemconfigure(
+            guiSable[y][x],
+            fill="black")
+    else:
+        cTableau.itemconfigure(
+            guiSable[y][x],
+            fill=couleur[dataSand[y][x]])
 
 
 def automate(auto=False):
-    for i in range(0, len(dataSand)):
-        for j in range(0, len(dataSand)):
-            stabiliserCase(x=j, y=i)
+    signal = False
+    for i in range(0, len(dataSand) - 1):
+        for j in range(0, len(dataSand) - 1):
+            if dataSand[i][j] > 4:
+                signal = True
+                stabiliserCase(x=j, y=i)
     if auto is True:
-        cTableau.after(20, automate)
+        cTableau.after(150, automate(auto=signal))
 
 
 ###############################################
