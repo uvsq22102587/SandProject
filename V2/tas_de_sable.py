@@ -370,27 +370,20 @@ def showSable(config: list):
             if config[i][j] >= len(couleur):
                 cTableau.itemconfigure(guiSable[i][j], fill="black")
             else:
-                cTableau.itemconfigure(guiSable[i][j], fill=couleur[config[i][j]])
-                
+                cTableau.itemconfigure(guiSable[i][j], fill=couleur[config[i][j]])            
 
 
 ##############################################
 
 
 ##############################################
-
-
-
-
-
-
-
-
-
-
 
 
 # Boucle Principale
+
+
 initialisation()
+
+
 root.mainloop()
 # Boucle Principale
