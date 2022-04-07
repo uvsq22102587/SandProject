@@ -11,13 +11,13 @@ import random as rdm
 ###############################################
 # Initialisation des variables
 guiSable = []
-dataSand = [[0 for i in range(0, 47)]for i in range(0, 47)]
+dataSand = [[0 for i in range(0, 101)]for i in range(0, 101)]
 couleur = ["white", "yellow", "green", "blue", "purple"]
 ###############################################
 # initialisation de la fenêtre
 root = tk.Tk()
 root.title("tas de sable")
-cTableau = tk.Canvas(root, height=499, width=499, bg="white")
+cTableau = tk.Canvas(root, height=1000, width=1000, bg="white")
 cTableau.grid(column=1, row=1, rowspan=10)
 ###############################################
 # Définition fonction gestion interface
@@ -87,13 +87,13 @@ def enleverGrid():
 def random():
     """Créée une matrice de 48*48 avec des nombres rdm entre 0 et 3"""
     print("random")
-    matrice = [[rdm.randint(0, 3) for i in range(0, 47)]for i in range(0, 47)]
+    matrice = [[rdm.randint(0, 3) for i in range(0, 101)]for i in range(0, 101)]
     return matrice
 
 
 def maxStable():
     print("maxStable")
-    matrice = [[3 for i in range(0, 47)] for i in range(0, 47)]
+    matrice = [[3 for i in range(0, 101)] for i in range(0, 101)]
     return matrice
 
 
@@ -101,7 +101,7 @@ def pileCentree():
     """Créée une matrice de 48*48 avec la case centrale rempli de 4
     grains de sable."""
     print("pile Centrée")
-    matrice = [[0 for i in range(0, 47)] for i in range(0, 47)]
+    matrice = [[0 for i in range(0, 101)] for i in range(0, 101)]
     matrice[23][23] = 4
     return matrice
 
@@ -211,13 +211,13 @@ def stabiliserCase(x, y):
 
 def automate(auto=False):
     signal = False
-    for i in range(0, len(dataSand) - 1):
-        for j in range(0, len(dataSand) - 1):
+    for i in range(0, len(dataSand)):
+        for j in range(0, len(dataSand)):
             if dataSand[i][j] > 4:
                 signal = True
                 stabiliserCase(x=j, y=i)
-    if auto is True:
-        cTableau.after(150, automate(auto=signal))
+    if auto is True and signal is True:
+        cTableau.after(1, automate(auto=signal))
 
 
 ###############################################
@@ -324,7 +324,7 @@ def diezFormation():
     x = 20
     y = 10
     for j in range(0, 2):
-        for i in range(0, 47):
+        for i in range(0, 101):
             cTableau.create_text(x, y, text="#")
             x += 10
         y = 490
@@ -332,7 +332,7 @@ def diezFormation():
     x = 10
     y = 20
     for j in range(0, 2):
-        for i in range(0, 47):
+        for i in range(0, 101):
             cTableau.create_text(x, y, text="#")
             y += 10
         x = 490
@@ -346,19 +346,19 @@ def initialisation():
     print("initialisation")
     sousListguiSable = []
     diezFormation()
-    y = 20
-    for i in range(0, 47):
-        x = 10
-        for j in range(0, 47):
-            x += 10
+    y = 12
+    for i in range(0, 101):
+        x = 6
+        for j in range(0, 101):
+            x += 6
             rectangle = cTableau.create_rectangle(
-                (x - 5, y - 5),
-                (x + 5, y + 5),
+                (x - 3, y - 3),
+                (x + 3, y + 3),
                 fill="White")
             sousListguiSable.append(rectangle)
         guiSable.append(sousListguiSable)
         sousListguiSable = []
-        y += 10
+        y += 6
 
 
 def showSable(config: list):
